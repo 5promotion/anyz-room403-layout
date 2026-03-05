@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANYZ 403号室 座席プロット（デスク配置2）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif; background: #f0f0f0; }
+
+  h1 { text-align: center; font-size: 20px; padding: 16px; background: #333; color: #fff; }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    padding: 10px 20px; background: #fff; border-bottom: 1px solid #ddd;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 13px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  .info-bar {
+    display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+    padding: 8px 20px; background: #fafafa; border-bottom: 1px solid #eee;
+    font-size: 12px; color: #666;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+  }
+  .container img {
+    width: 100%;
+    display: block;
+  }
+
+  /* Seat marker overlay */
+  .seat {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    border: 2px solid rgba(255,255,255,0.7);
+    z-index: 10;
+    cursor: default;
+  }
+  .seat .name { font-size: 9px; line-height: 1.1; }
+  .seat .code { font-size: 7px; opacity: 0.95; margin-top: 1px; font-family: monospace; }
+
+  .seat.empty {
+    background: rgba(150,150,150,0.45) !important;
+    border: 2px dashed rgba(150,150,150,0.7);
+    box-shadow: none;
+  }
+  .seat.empty .name { color: #fff; font-weight: bold; font-size: 10px; }
+  .seat.empty .code { color: rgba(255,255,255,0.7); }
+
+  /* Team colors */
+  .team-kishida { background: rgba(240,160,48,0.9); }
+  .team-kodaira { background: rgba(92,184,92,0.9); }
+  .team-asami  { background: rgba(91,192,222,0.9); }
+  .team-aruga  { background: rgba(224,112,144,0.9); }
+  .team-miyake { background: rgba(176,112,208,0.9); }
+  .team-div    { background: rgba(212,192,96,0.9); }
+  .team-cto    { background: rgba(112,192,176,0.9); }
+
+  /* Plate labels on desk surfaces */
+  .plate-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: rgba(180,120,40,0.85);
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 8;
+    pointer-events: none;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  /* Group labels */
+  .group-label {
+    position: absolute;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 15;
+    pointer-events: none;
+  }
+
+  /* Mapping table */
+  .mapping {
+    max-width: 1000px;
+    margin: 10px auto 30px;
+    padding: 0 20px;
+  }
+  .mapping h2 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  .mapping table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .mapping th {
+    background: #555; color: #fff;
+    padding: 6px 8px; text-align: left;
+  }
+  .mapping td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  .mapping tr:nth-child(even) td { background: #f9f9f9; }
+  .mapping .color-chip {
+    display: inline-block; width: 10px; height: 10px;
+    border-radius: 50%; margin-right: 4px; vertical-align: middle;
+  }
+
+  footer {
+    text-align: center; font-size: 12px; color: #888; padding: 16px;
+  }
+</style>
+</head>
+<body>
+
+<h1>ANYZ 403号室 座席プロット（デスク配置2）</h1>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#f0a030"></div>岸田Aチーム</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#5cb85c"></div>小平Unit</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#5bc0de"></div>淺見Unit</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e07090"></div>有我チーム</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b070d0"></div>三宅チーム</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d4c060"></div>Div.直下</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#70c0b0"></div>CTO</div>
+</div>
+
+<div class="info-bar">
+  <span>全24席 / 配置14名 / 空席10</span>
+  <span>天板12枚（IKEA PINNARP 2590×650mm）</span>
+  <span>デスクグループ: A（上段）B（中上）C（中下）D（下段）</span>
+</div>
+
+<div class="container">
+  <img src="desk_layout2_page1.png" alt="403号室 デスク配置2">
+
+  <!-- ===== Plate Labels (天板番号) ===== -->
+  <!-- Group A plates (top desk, y≈23%) -->
+  <div class="plate-label" style="left:38.2%; top:23.0%;">A-1</div>
+  <div class="plate-label" style="left:58.3%; top:23.0%;">A-2</div>
+
+  <!-- Group B plates (upper island, upper row y≈35%, lower row y≈39%) -->
+  <div class="plate-label" style="left:38.2%; top:34.5%;">B-1</div>
+  <div class="plate-label" style="left:58.3%; top:34.5%;">B-2</div>
+  <div class="plate-label" style="left:38.2%; top:39.0%;">B-3</div>
+  <div class="plate-label" style="left:58.3%; top:39.0%;">B-4</div>
+
+  <!-- Group C plates (lower island, upper row y≈49%, lower row y≈53%) -->
+  <div class="plate-label" style="left:38.2%; top:49.0%;">C-1</div>
+  <div class="plate-label" style="left:58.3%; top:49.0%;">C-2</div>
+  <div class="plate-label" style="left:38.2%; top:53.0%;">C-3</div>
+  <div class="plate-label" style="left:58.3%; top:53.0%;">C-4</div>
+
+  <!-- Group D plates (bottom desk, y≈65%) -->
+  <div class="plate-label" style="left:38.2%; top:65.0%;">D-1</div>
+  <div class="plate-label" style="left:58.3%; top:65.0%;">D-2</div>
+
+  <!-- ===== Group Labels ===== -->
+  <div class="group-label" style="left:74%; top:23.0%;">Grp A: 空席</div>
+  <div class="group-label" style="left:74%; top:36.5%;">Grp B: 岸田A+小平U</div>
+  <div class="group-label" style="left:74%; top:51.0%;">Grp C: 淺見U+有我+他</div>
+  <div class="group-label" style="left:74%; top:65.0%;">Grp D: 空席</div>
+
+  <!-- ===== Group A (Top desk) — 空席 ===== -->
+  <!-- Row 1: y=26.8% — seats below Group A plates -->
+  <div class="seat empty" style="left:34.4%; top:26.8%;"><span class="name">A1</span></div>
+  <div class="seat empty" style="left:41.9%; top:26.8%;"><span class="name">A2</span></div>
+  <div class="seat empty" style="left:54.6%; top:26.8%;"><span class="name">A3</span></div>
+  <div class="seat empty" style="left:62.0%; top:26.8%;"><span class="name">A4</span></div>
+
+  <!-- ===== Group B (Upper island) — 岸田Aチーム + 小平Unit ===== -->
+  <!-- Row 2: y=31.0% — seats above B upper plates (B-1, B-2) -->
+  <div class="seat team-kishida" style="left:34.4%; top:31.0%;"><span class="name">岸田</span><span class="code">B1</span></div>
+  <div class="seat team-kishida" style="left:41.9%; top:31.0%;"><span class="name">岸</span><span class="code">B2</span></div>
+  <div class="seat team-kishida" style="left:54.6%; top:31.0%;"><span class="name">峯岸</span><span class="code">B3</span></div>
+  <div class="seat team-kishida" style="left:62.0%; top:31.0%;"><span class="name">猪龍</span><span class="code">B4</span></div>
+
+  <!-- Row 3: y=42.2% — seats below B lower plates (B-3, B-4) -->
+  <div class="seat team-kodaira" style="left:34.4%; top:42.2%;"><span class="name">小平</span><span class="code">B5</span></div>
+  <div class="seat team-kodaira" style="left:41.9%; top:42.2%;"><span class="name">吉田</span><span class="code">B6</span></div>
+  <div class="seat team-kodaira" style="left:54.6%; top:42.2%;"><span class="name">望月</span><span class="code">B7</span></div>
+  <div class="seat empty"        style="left:62.0%; top:42.2%;"><span class="name">B8</span></div>
+
+  <!-- ===== Group C (Lower island) — 淺見Unit + 有我 + 管理系 ===== -->
+  <!-- Row 4: y=45.2% — seats above C upper plates (C-1, C-2) -->
+  <div class="seat team-asami" style="left:34.4%; top:45.2%;"><span class="name">淺見</span><span class="code">C1</span></div>
+  <div class="seat team-asami" style="left:41.9%; top:45.2%;"><span class="name">齋藤</span><span class="code">C2</span></div>
+  <div class="seat team-aruga" style="left:54.6%; top:45.2%;"><span class="name">有我</span><span class="code">C3</span></div>
+  <div class="seat team-aruga" style="left:62.0%; top:45.2%;"><span class="name">西山</span><span class="code">C4</span></div>
+
+  <!-- Row 5: y=56.4% — seats below C lower plates (C-3, C-4) -->
+  <div class="seat team-miyake" style="left:34.4%; top:56.4%;"><span class="name">三宅</span><span class="code">C5</span></div>
+  <div class="seat team-div"   style="left:41.9%; top:56.4%;"><span class="name">黒宮</span><span class="code">C6</span></div>
+  <div class="seat team-cto"   style="left:54.6%; top:56.4%;"><span class="name">石井</span><span class="code">C7</span></div>
+  <div class="seat empty"      style="left:62.0%; top:56.4%;"><span class="name">C8</span></div>
+
+  <!-- ===== Group D (Bottom desk) — 空席 ===== -->
+  <!-- Row 6: y=60.6% — seats above Group D plates -->
+  <div class="seat empty" style="left:34.3%; top:60.6%;"><span class="name">D1</span></div>
+  <div class="seat empty" style="left:41.7%; top:60.6%;"><span class="name">D2</span></div>
+  <div class="seat empty" style="left:54.4%; top:60.6%;"><span class="name">D3</span></div>
+  <div class="seat empty" style="left:61.9%; top:60.6%;"><span class="name">D4</span></div>
+
+</div>
+
+<!-- Mapping Table -->
+<div class="mapping">
+  <h2>天板・座席マッピング</h2>
+  <table>
+    <tr>
+      <th>グループ</th><th>天板</th><th>座席</th><th>メンバー</th><th>チーム</th>
+    </tr>
+    <tr>
+      <td rowspan="2">A（上段）</td>
+      <td>A-1</td><td>A1, A2</td>
+      <td>— / —</td><td>空席</td>
+    </tr>
+    <tr>
+      <td>A-2</td><td>A3, A4</td>
+      <td>— / —</td><td>空席</td>
+    </tr>
+    <tr>
+      <td rowspan="4">B（中上）</td>
+      <td>B-1</td><td>B1, B2</td>
+      <td><span class="color-chip" style="background:#f0a030"></span>岸田 / <span class="color-chip" style="background:#f0a030"></span>岸</td>
+      <td>岸田A</td>
+    </tr>
+    <tr>
+      <td>B-2</td><td>B3, B4</td>
+      <td><span class="color-chip" style="background:#f0a030"></span>峯岸 / <span class="color-chip" style="background:#f0a030"></span>猪龍</td>
+      <td>岸田A</td>
+    </tr>
+    <tr>
+      <td>B-3</td><td>B5, B6</td>
+      <td><span class="color-chip" style="background:#5cb85c"></span>小平 / <span class="color-chip" style="background:#5cb85c"></span>吉田</td>
+      <td>小平U</td>
+    </tr>
+    <tr>
+      <td>B-4</td><td>B7, B8</td>
+      <td><span class="color-chip" style="background:#5cb85c"></span>望月 / —</td>
+      <td>小平U / 空席</td>
+    </tr>
+    <tr>
+      <td rowspan="4">C（中下）</td>
+      <td>C-1</td><td>C1, C2</td>
+      <td><span class="color-chip" style="background:#5bc0de"></span>淺見 / <span class="color-chip" style="background:#5bc0de"></span>齋藤</td>
+      <td>淺見U</td>
+    </tr>
+    <tr>
+      <td>C-2</td><td>C3, C4</td>
+      <td><span class="color-chip" style="background:#e07090"></span>有我 / <span class="color-chip" style="background:#e07090"></span>西山</td>
+      <td>有我</td>
+    </tr>
+    <tr>
+      <td>C-3</td><td>C5, C6</td>
+      <td><span class="color-chip" style="background:#b070d0"></span>三宅 / <span class="color-chip" style="background:#d4c060"></span>黒宮</td>
+      <td>三宅 / Div.直下</td>
+    </tr>
+    <tr>
+      <td>C-4</td><td>C7, C8</td>
+      <td><span class="color-chip" style="background:#70c0b0"></span>石井 / —</td>
+      <td>CTO / 空席</td>
+    </tr>
+    <tr>
+      <td rowspan="2">D（下段）</td>
+      <td>D-1</td><td>D1, D2</td>
+      <td>— / —</td><td>空席</td>
+    </tr>
+    <tr>
+      <td>D-2</td><td>D3, D4</td>
+      <td>— / —</td><td>空席</td>
+    </tr>
+  </table>
+</div>
+
+<footer>
+  ※ デスク配置2ベース座席配置案 | 14名配置・空席10 | 天板12枚（IKEA PINNARP）<br>
+  那覇勤務5名(古波蔵/比嘉/仲田/福井/大城)・退職1名(稲垣)除く
+</footer>
+
+</body>
+</html>
