@@ -1,0 +1,7 @@
+# CLAUDE.md と設定ファイルの変更には管理者のレビューを必須にする
+# ※ GitHub の Branch Protection Rules で「Require review from Code Owners」を有効にすること
+
+CLAUDE.md                      @widenormal @soumei5 @shotamiyake55555
+.claude/settings.json          @widenormal @soumei5 @shotamiyake55555
+.claude/hooks/                 @widenormal @soumei5 @shotamiyake55555
+docs/claude-detailed-rules.md  @widenormal @soumei5 @shotamiyake55555
