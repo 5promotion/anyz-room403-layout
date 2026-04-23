@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANYZ 館内利用案内</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  header {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 16px;
+  }
+  header h1 { font-size: 22px; }
+  header p { font-size: 13px; color: #ccc; margin-top: 4px; }
+
+  nav {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  nav a {
+    display: inline-block;
+    padding: 4px 14px;
+    background: #e8e8e8;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  nav a:hover { background: #c8b400; color: #fff; }
+
+  .main { max-width: 900px; margin: 0 auto; padding: 20px 16px 60px; }
+
+  .floor-header {
+    background: linear-gradient(135deg, #c8b400, #a89600);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin: 30px 0 16px;
+  }
+
+  .facility {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .facility h3 {
+    font-size: 17px;
+    border-left: 4px solid #c8b400;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  .facility .subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .facility .desc {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .facility .meta {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .facility .meta strong { color: #333; }
+
+  .rules {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+  }
+  .rules summary {
+    font-weight: bold;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+  }
+  .rules ul { margin-top: 6px; padding-left: 16px; }
+  .rules li { margin-bottom: 2px; }
+
+  .wifi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .wifi-table th {
+    background: #555;
+    color: #fff;
+    padding: 6px 10px;
+    text-align: left;
+  }
+  .wifi-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .wifi-table tr:nth-child(even) td { background: #fafafa; }
+  .wifi-table .wifi-icon::before { content: "\ud83d\udcf6 "; }
+
+  .note {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+  }
+
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .price-table th {
+    background: #f0f0f0;
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+  }
+  .price-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .booking-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background: #c8b400;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .booking-link:hover { background: #a89600; }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    padding: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .facility { padding: 16px; }
+    .floor-header { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ANYZ 館内利用案内</h1>
+  <p>施設共有部の利用ルール・Wi-Fi情報</p>
+</header>
+
+<nav>
+  <a href="#floor-2f">2F</a>
+  <a href="#floor-4f">4F</a>
+  <a href="#floor-3f5f">3F-5F</a>
+  <a href="#other">その他</a>
+</nav>
+
+<div class="main">
+
+<!-- ==================== 2F ==================== -->
+<div class="floor-header" id="floor-2f">2F</div>
+
+<!-- Social Lounge -->
+<div class="facility">
+  <h3>Social Lounge (2F)</h3>
+  <p class="desc">来客時の応接や簡単な打ち合わせ・ご商談・休憩スペース等でご利用いただけます。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="note">（照明、空調は8:00〜22:00までの稼働とし、時間外は一部消灯され、空調は制限されます。）</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">Social Lounge (2F)</td><td>ANYZ_Social_Longe</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>7名以上の利用（6名まで利用可）</li>
+      <li>2時間以上の利用</li>
+      <li>荷物等での場所取り</li>
+      <li>仮眠・宿泊・大声での会話</li>
+      <li>入居者以外のみでの利用</li>
+      <li>私物やゴミの放置</li>
+      <li>備品を2階ソーシャルラウンジ外に持ち出すこと</li>
+      <li>面接・取材・撮影での利用</li>
+      <li>イヤホンをしないスカイプやWEB会議システムの利用</li>
+      <li>食事及び軽食、アルコール類などの持ち込み</li>
+      <li>その他、オフィスラウンジとして相応しくない行為</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Phone Booth -->
+<div class="facility">
+  <h3>Phone Booth (Social Lounge内) <span class="subtitle">※予約不要</span></h3>
+  <p class="desc">クライアントとのお電話、WEBミーティング等にご利用ください。（無料）</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="meta"><strong>利用可能人数:</strong> 1名</p>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>1時間以上のご利用</li>
+      <li>荷物等での場所取り</li>
+      <li>私物やゴミの放置</li>
+      <li>仮眠</li>
+      <li>家具の移動</li>
+      <li>入居者以外の利用、不特定多数の利用</li>
+      <li>飲食・飲酒</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Buffer Lounge -->
+<div class="facility">
+  <h3>Buffer Lounge (2F)</h3>
+  <p class="desc">来客時の応接や簡単な打ち合わせ等でご利用いただけます。飲食可としていますので、ご購入いただいた珈琲や軽食等を持ち込んでいただけます。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="note">（照明、空調は8:00〜22:00までの稼働とし、時間外は一部消灯され、空調は制限されます。）</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">Buffer Lounge (2F)</td><td>ANYZ_Buffer_Longe</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>9名以上の利用（8名まで利用可）</li>
+      <li>3時間以上の占有利用</li>
+      <li>荷物等での場所取り</li>
+      <li>仮眠・宿泊・大声での会話</li>
+      <li>入居者以外のみでの利用</li>
+      <li>私物やゴミの放置</li>
+      <li>備品をバッファラウンジ外に持ち出すこと</li>
+      <li>面接・取材・撮影での利用</li>
+      <li>イヤホンをしないスカイプやWEB会議システムの利用</li>
+      <li>アルコール類などの持ち込み</li>
+      <li>貸切り利用等によりご利用いただけない場合がございます。</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Work Lounge -->
+<div class="facility">
+  <h3>Work Lounge (2F)</h3>
+  <p class="desc">個人での作業等でご利用いただけます。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="note">（照明、空調は8:00〜22:00までの稼働とし、時間外は一部消灯され、空調は制限されます。）</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">Work Lounge (2F)</td><td>ANYZ_Work_Longe</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>2名以上の利用（1名まで利用可）</li>
+      <li>荷物等での場所取り</li>
+      <li>仮眠・宿泊・大声での会話</li>
+      <li>入居者以外のみでの利用</li>
+      <li>私物やゴミの放置</li>
+      <li>備品を2階ワークラウンジ外に持ち出すこと</li>
+      <li>面接・取材・撮影での利用</li>
+      <li>イヤホンをしないスカイプやWEB会議システムの利用</li>
+      <li>食事及び軽食、アルコール類などの持ち込み</li>
+      <li>その他、オフィスラウンジとして相応しくない行為</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Booth -->
+<div class="facility">
+  <h3>Booth (Work Lounge内) <span class="subtitle">※BoothC〜F要予約</span></h3>
+  <p class="desc">クライアントとのお電話、WEBミーティング等にご利用ください。（無料）<br>BoothC〜Fご利用時には専用のWEBサイトより事前予約が必要となります。予約は1ヶ月前より可能です。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="meta"><strong>利用可能人数:</strong> 1名</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">BoothA</td><td>ANYZ_2F_Booth A</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">BoothB</td><td>ANYZ_2F_Booth B</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">BoothC</td><td>ANYZ_2F_Booth C</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">BoothD</td><td>ANYZ_2F_Booth D</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">BoothE</td><td>ANYZ_2F_Booth E</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">BoothF</td><td>ANYZ_2F_Booth F</td><td>anyz0000</td></tr>
+  </table>
+  <a class="booking-link" href="https://reserve.realgate.jp/" target="_blank">BoothC〜F 予約WEBサイト</a>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>無断利用・無断延長でのご利用 ※発覚した場合には、フォンブースの利用制限を設けさせて頂く場合がございます。</li>
+      <li>5時間以上のご利用（BoothA・Bは原則1時間まで）</li>
+      <li>荷物等での場所取り</li>
+      <li>私物やゴミの放置</li>
+      <li>仮眠</li>
+      <li>家具の移動</li>
+      <li>入居者以外の利用、不特定多数の利用</li>
+      <li>食事</li>
+    </ul>
+  </details>
+</div>
+
+<!-- 複合機 -->
+<div class="facility">
+  <h3>複合機 (Work Lounge内)</h3>
+  <p class="desc">コピー、認証プリント、USBプリント、USBスキャン機能をご利用いただけます。（FAX機能はありません。）</p>
+  <table class="price-table">
+    <tr><th>種類</th><th>料金（税込）</th></tr>
+    <tr><td>モノクロプリント（A3/A4共通）</td><td>5円/枚</td></tr>
+    <tr><td>カラープリント（A4・A3ともに）</td><td>25円/枚</td></tr>
+    <tr><td>スキャン</td><td>10円/枚</td></tr>
+  </table>
+  <p class="note">※都度課金制となります。領収書の発行は可能です。<br>※ICカードの取り忘れにご注意ください。<br>※コピーや印刷物の取り忘れ等にご注意いただき、個人情報の管理、紛失につきまして施設側では一切の責任を負いかねます。</p>
+</div>
+
+<!-- Balcony -->
+<div class="facility">
+  <h3>Balcony (2F)</h3>
+  <p class="desc">休憩やリラックス、作業etc…、コミュニティスペースとしてご利用ください。</p>
+  <p class="meta"><strong>ご利用可能時間:</strong> 8:00〜20:00</p>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>複数人での利用や他の利用者の利用を妨げる行為</li>
+      <li>私物やゴミの放置</li>
+      <li>占有行為</li>
+      <li>睡眠・宿泊・大声での会話</li>
+      <li>2時間以上の利用</li>
+      <li>荷物等での場所取り</li>
+      <li>喫煙行為</li>
+      <li>入居者以外のみでの利用</li>
+      <li>泥酔・酩酊状態での屋上の出入り</li>
+      <li>立ち入り禁止エリアへの立ち入り</li>
+      <li>備品を持ち出す行為</li>
+      <li>花火・バーベキュー等の火器を伴う使用</li>
+      <li>飲食・飲酒を伴う利用</li>
+      <li>スピーカーの使用及びイヤホンをしないスカイプやWEB会議システムの利用</li>
+      <li>物を投げたり落とす行為</li>
+      <li>家具、植栽、照明等共用設備に傷をつけたり故障の原因となる行為</li>
+      <li>配線、配管などに触れる行為</li>
+      <li>商業利用</li>
+      <li>無許可での商業撮影利用</li>
+      <li>出入口を開放したままにする行為</li>
+    </ul>
+  </details>
+  <p class="note">※万一、私物等が施設外へ落下した場合にはご利用者様に損害等一切の責任を負っていただきます。</p>
+  <p class="note">※貸し切り利用はできません。イベント等により一時的にご利用いただけない場合がございます。<br>※強風等も考慮し、屋外へ物品等が飛ばされないよう、十分ご注意ください。</p>
+</div>
+
+<!-- Meeting room A・B / Seminar room B -->
+<div class="facility">
+  <h3>Meeting room A・B / Seminar room B (2F) <span class="subtitle">※要予約</span></h3>
+  <p class="desc">社内外のミーティング・セミナー等にご利用ください。<br>ご利用には専用webサイトから事前予約が必要になります。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="meta"><strong>利用時間制限:</strong> 1日5時間まで ※セミナールームBはセミナールームAとの連結利用に限り、5時間以上の利用も可</p>
+  <p class="meta"><strong>利用人数制限:</strong> MTG ROOM A・B＝6名まで / セミナールームB＝12名まで</p>
+  <p class="meta"><strong>利用料金:</strong> MTG ROOM A・B 825円（税込）/30分 / セミナールーム B 1,100円（税込）/30分</p>
+  <p class="meta"><strong>備品:</strong> モニター・ホワイトボード・マーカー・スピーカー・WEBカメラ</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">ミーティングルーム A</td><td>ANYZ_3F_Meeting Room</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">ミーティングルーム B</td><td>ANYZ_4F_Meeting Room</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">セミナールーム B</td><td>ANYZ_Seminar Room B</td><td>anyz0000</td></tr>
+  </table>
+  <a class="booking-link" href="https://reserve.realgate.jp/" target="_blank">ミーティングルーム・セミナールームB 予約WEBサイト</a>
+  <details class="rules">
+    <summary>注意事項</summary>
+    <ul>
+      <li>予約は1ヶ月前から可能です。</li>
+      <li>ご予約の詳細な操作方法については別紙にてご案内いたします。</li>
+      <li>利用時間を延長・変更・短縮される場合は、WEBサイトより予約状況を確認の上手続きを行ってください。</li>
+      <li>当日のキャンセルは利用料の100%がかかります。</li>
+      <li>物販目的での利用・転借・不特定多数でのご利用は禁止しております。</li>
+      <li>利用後はミーティングルームをもとの状態に戻し、終了時間までにご退出ください。</li>
+      <li>WEBサイトへのログインID・パスワードは「引き渡しに伴う受領書」をご参照ください。</li>
+      <li>無断利用・無断延長が発覚した場合には、利用料を徴収し会議室の利用制限を設けさせて頂く場合がございます。</li>
+      <li>利用料は月末締めとさせていただき、翌月資料と合わせてご請求致します。</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Seminar room A・B -->
+<div class="facility">
+  <h3>Seminar room A・B (2F) <span class="subtitle">※要予約</span></h3>
+  <p class="desc">社内外のミーティング・イベント・セミナー等にご利用ください。<br>セミナールームA及びセミナールームBとの連結利用でのご利用は事前申請により予約が可能となります。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="meta"><strong>利用時間制限:</strong> 申請にて要協議</p>
+  <p class="meta"><strong>利用人数制限:</strong> セミナールームA＝18名まで / セミナールーム連結利用＝30名まで</p>
+  <p class="meta"><strong>利用料金:</strong> セミナールーム A 2,200円（税込）/30分 / セミナールーム連結利用＝4,400円（税込）/30分</p>
+  <p class="meta"><strong>備品:</strong> プロジェクター・マイク・スピーカー・ホワイトボード・マーカー</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">セミナールーム A</td><td>ANYZ_Seminar Room A</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>セミナールーム注意事項</summary>
+    <ul>
+      <li>原則1ヶ月前までに要予約が必要です。1ヶ月以内の申請の場合、予約が入っていなければ予約可能。</li>
+      <li>3ヶ月前より前の予約は承れません。（WEBサイトより予約状況の閲覧は可能です。）</li>
+      <li>予約方法：申請書及び企画書等の提出　予約状況・詳細は2階コンシェルジュデスクへお問い合わせください。</li>
+      <li>物販目的での利用・転借・不特定多数でのご利用は禁止しております。その他の内容でも内容により、利用をお断りする場合がございます。</li>
+      <li>利用後はセミナールームをもとの状態に戻し、終了時間までにご退出ください。</li>
+      <li>無断利用・無断延長が発覚した場合には、利用料を徴収し会議室等の利用制限を設けさせて頂く場合がございます。</li>
+      <li>利用料は月末締めとさせていただき、翌月資料と合わせてご請求致します。</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Break Corner -->
+<div class="facility">
+  <h3>Break corner (2F)</h3>
+  <p class="desc">飲食を行える休憩スペース等でご利用いただけます。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="note">（照明、空調は8:00〜22:00までの稼働とし、時間外は一部消灯され、空調は制限されます。）</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">ブレークコーナー</td><td>ANYZ_Break Corner</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>4名以上の利用（3名まで利用可）</li>
+      <li>2時間以上の利用</li>
+      <li>荷物等での場所取り</li>
+      <li>仮眠・宿泊・大声での会話</li>
+      <li>入居者以外のみでの利用</li>
+      <li>私物やゴミの放置</li>
+      <li>面接・取材・撮影での利用</li>
+      <li>スカイプやWEB会議システムの利用（イヤホンの有無は問いません。）</li>
+      <li>アルコール類などの持ち込み</li>
+      <li>その他、オフィスラウンジとして相応しくない行為</li>
+    </ul>
+  </details>
+</div>
+
+<!-- 無人コンビニサービス -->
+<div class="facility">
+  <h3>無人コンビニサービス (Break corner 2F)</h3>
+  <p class="desc">休憩やリフレッシュしたいときにご利用できる、軽食や飲み物を提供しております。（有料）</p>
+  <p class="note">※ご利用にはモバイル決済端末が必要となります。領収書は発行しておりませんので予めご了承ください。<br>※無銭利用が確認できた際は、然るべき対応をさせていただきます。<br>※本サービスは予告なく終了する場合がございます。</p>
+</div>
+
+<!-- トイレ -->
+<div class="facility">
+  <h3>トイレ</h3>
+  <p class="desc">2F〜5Fの各階共用部廊下に男性用・女性用のトイレを設けております。</p>
+  <p class="note">※1階のトイレには男女兼用のバリアフリートイレとなっています。<br>※皆さまに清潔にご利用いただきますよう、ご協力お願い致します。<br>※私物の放置や占有など、他の方が不快に思う利用方法はおやめください。<br>※一定期間放置されたものは廃棄し、処分費を請求いたします。</p>
+</div>
+
+<!-- iPad受付システム -->
+<div class="facility">
+  <h3>iPad受付システム (2F)</h3>
+  <p class="desc">来客時にお客様からタブレット端末を通し、事前にご登録頂いた連絡先へ直接お繋ぎいたします。</p>
+  <p class="note">※1Fエントランス開放時間外は来訪者様へ事前にやりとりいただき、来訪方法につき、入居者様にてご対応ください。<br>※事前にご登録いただきました連絡先（固定電話、携帯電話）へ外線にて発信いたします。<br>※登録は1契約1番号となります。</p>
+</div>
+
+<!-- コンシェルジュデスク -->
+<div class="facility">
+  <h3>コンシェルジュデスク (2F)</h3>
+  <p class="desc">施設コンシェルジュが、下記運営時間内にて、施設に関わるご案内をいたします。</p>
+  <p class="meta"><strong>運営時間:</strong> 平日9:00-18:00</p>
+  <p class="meta"><strong>定休日:</strong> 土日祝祭日・GW・夏季休暇・年末年始 ※その他運営管理上の事情により事前告知した日</p>
+  <p class="meta"><strong>コンシェルジュデスク MAIL:</strong> front-anyz@realgate.jp</p>
+  <p class="note">運営時間内および運営時間外のお問合せはこちらへご連絡ください。運営時間外のお問合せは翌営業日に回答致します。</p>
+  <p class="note">※コンシェルジュデスクの運営時間にかかわらず、施設専有部は24時間利用いただけます。<br>※台風や大雪等の天候や自然災害などの、やむを得ない事情により、運営時間を変更する場合がございます。</p>
+</div>
+
+<!-- ==================== 4F ==================== -->
+<div class="floor-header" id="floor-4f">4F</div>
+
+<!-- Garden -->
+<div class="facility">
+  <h3>Garden (4F)</h3>
+  <p class="desc">休憩やリラックス、作業、ランチ利用etc…<br>コミュニティスペースとしてご利用ください。</p>
+  <p class="meta"><strong>ご利用可能時間:</strong> 9:00〜17:00</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">Garden (4F)</td><td>ANYZ_Garden</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>7名以上の利用（6名まで利用可）</li>
+      <li>私物やゴミの放置</li>
+      <li>占有行為</li>
+      <li>睡眠・宿泊・大声での会話</li>
+      <li>2時間以上の利用</li>
+      <li>荷物等での場所取り</li>
+      <li>喫煙行為</li>
+      <li>入居者以外のみでの利用</li>
+      <li>泥酔・酩酊状態での屋上の出入り</li>
+      <li>立ち入り禁止エリアへの立ち入り</li>
+      <li>備品を持ち出す行為</li>
+      <li>花火・バーベキュー等の火器を伴う使用</li>
+      <li>飲酒を伴う利用</li>
+      <li>スピーカーの使用及びイヤホンをしないスカイプやWEB会議システムの利用</li>
+      <li>物を投げたり落とす行為</li>
+      <li>家具、植栽、照明等共用設備に傷をつけたり故障の原因となる行為</li>
+      <li>配線、配管などに触れる行為</li>
+      <li>商業利用</li>
+      <li>無許可での商業撮影利用</li>
+      <li>出入口を開放したままにする行為</li>
+    </ul>
+  </details>
+  <p class="note">※食事は可能です（飲酒不可）。※ゴミは各自お持ち帰りください。<br>※万一、私物等が施設外へ落下した場合にはご利用者様に損害等一切の責任を負っていただきます。</p>
+  <p class="note">※貸し切り利用はできません。イベント等により一時的にご利用いただけない場合がございます。</p>
+</div>
+
+<!-- ==================== 3F-5F ==================== -->
+<div class="floor-header" id="floor-3f5f">3F - 5F</div>
+
+<!-- フリートークスペース -->
+<div class="facility">
+  <h3>フリートークスペース (3F・4F・5F)</h3>
+  <p class="desc">社内でのMTG、クライアントとのお電話、WEBミーティング等にご利用ください。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">3階フリートークスペース</td><td>ANYZ_3F_Free Talk Space</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">4階フリートークスペース</td><td>ANYZ_4F_Free Talk Space</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">5階フリートークスペース</td><td>ANYZ_5F_Free Talk Space</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>2時間以上の継続的ご利用</li>
+      <li>荷物等での場所取り</li>
+      <li>私物やゴミの放置</li>
+      <li>大声での会話</li>
+      <li>スピーカーの使用及びイヤホンをしないスカイプやWEB会議等での利用</li>
+      <li>仮眠</li>
+      <li>家具の移動</li>
+      <li>入居者以外の利用、不特定多数の利用</li>
+      <li>飲食・飲酒</li>
+    </ul>
+  </details>
+</div>
+
+<!-- 無料フォンブース -->
+<div class="facility">
+  <h3>無料フォンブース (3F・4F・5F) <span class="subtitle">※要予約</span></h3>
+  <p class="desc">クライアントとのお電話、WEBミーティング等にご利用ください。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="meta"><strong>利用可能人数:</strong> 1名</p>
+  <p class="desc">ご利用時には専用のWEBサイトより事前予約が必要となります。予約は1ヶ月前より可能です。</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">3階フォンブース</td><td>ANYZ_3F_Phone Booth A</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">4階フォンブース B</td><td>ANYZ_4F_Phone Booth B</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">4階フォンブース C</td><td>ANYZ_4F_Phone Booth C</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">5階フォンブース D</td><td>ANYZ_5F_Phone Booth D</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">5階フォンブース E</td><td>ANYZ_5F_Phone Booth E</td><td>anyz0000</td></tr>
+  </table>
+  <details class="rules">
+    <summary>禁止事項</summary>
+    <ul>
+      <li>無断利用・無断延長でのご利用 ※発覚した場合には、フォンブースの利用制限を設けさせて頂く場合がございます。</li>
+      <li>5時間以上の継続的ご利用</li>
+      <li>荷物等での場所取り</li>
+      <li>私物やゴミの放置</li>
+      <li>仮眠</li>
+      <li>家具の移動</li>
+      <li>入居者以外の利用、不特定多数の利用</li>
+      <li>飲食・飲酒</li>
+    </ul>
+  </details>
+</div>
+
+<!-- ミーティングルーム (3F-5F) -->
+<div class="facility">
+  <h3>ミーティングルーム (3F・4F・5F) <span class="subtitle">※要予約</span></h3>
+  <p class="desc">社内外のミーティング等にご利用ください。<br>ご利用時には専用のWEBサイトより事前予約が必要です。</p>
+  <p class="meta"><strong>利用可能時間:</strong> 24時間</p>
+  <p class="meta"><strong>利用人数制限:</strong> 3F・5F MTG ROOM＝8名まで / 4F MTG ROOM＝6名まで</p>
+  <p class="meta"><strong>利用時間制限:</strong> 1日5時間まで</p>
+  <p class="meta"><strong>利用料金:</strong> 3F・5F MTG ROOM＝550円（税込）/30分 / 4F MTG ROOM＝550円（税込）/30分</p>
+  <p class="meta"><strong>備品:</strong> モニター・ホワイトボード・マーカー・スピーカー・WEBカメラ</p>
+  <table class="wifi-table">
+    <tr><th>Wi-Fi</th><th>SSID</th><th>パスワード</th></tr>
+    <tr><td class="wifi-icon">3階ミーティングルーム</td><td>ANYZ_3F_Meeting Room</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">4階ミーティングルーム</td><td>ANYZ_4F_Meeting Room</td><td>anyz0000</td></tr>
+    <tr><td class="wifi-icon">5階ミーティングルーム</td><td>ANYZ_5F_Meeting Room</td><td>anyz0000</td></tr>
+  </table>
+  <a class="booking-link" href="https://reserve.realgate.jp/" target="_blank">ミーティングルーム 予約WEBサイト</a>
+  <details class="rules">
+    <summary>禁止事項・注意事項</summary>
+    <ul>
+      <li>予約は1ヶ月前から可能です。</li>
+      <li>ご予約の詳細な操作方法については別紙にてご案内いたします。</li>
+      <li>利用時間を延長・変更・短縮される場合は、WEBサイトより予約状況を確認の上手続きを行ってください。</li>
+      <li>当日のキャンセルは利用料の100%がかかります。</li>
+      <li>物販目的での利用・転借・不特定多数でのご利用は禁止しております。</li>
+      <li>利用後はミーティングルームをもとの状態に戻し、終了時間までにご退出ください。</li>
+      <li>WEBサイトへのログインID・パスワードは「引き渡しに伴う受領書」をご参照ください。</li>
+      <li>無断利用・無断延長が発覚した場合には、利用料を徴収し会議室の利用制限を設けさせて頂く場合がございます。</li>
+      <li>利用料は月末締めとさせていただき、翌月資料と合わせてご請求致します。</li>
+    </ul>
+  </details>
+</div>
+
+<!-- ==================== その他 ==================== -->
+<div class="floor-header" id="other">その他</div>
+
+<!-- ゴミ捨て場 -->
+<div class="facility">
+  <h3>ゴミ捨て場 (2F-5F)</h3>
+  <p class="desc">分別のうえ、マップ記載のゴミ捨て場にお持ちください。</p>
+  <details class="rules">
+    <summary>注意事項</summary>
+    <ul>
+      <li>一度に大量の段ボールを廃棄する場合は別途費用が発生致します。</li>
+      <li>発泡スチロール・粗大ごみについては自ら業者を手配の上、自己負担にてお願いいたします。</li>
+      <li>上記以外の方法によるゴミの廃棄は不法投棄とみなし、場合によって契約解除の対象となります。</li>
+      <li>個人宅で発生したゴミ等の持ち込みは禁止です。</li>
+    </ul>
+  </details>
+  <p class="note"><strong>【お問い合わせ先】</strong><br>株式会社首都圏環境美化センター<br>TEL：03-3856-8144（営業時間 平日9:00〜17:00）</p>
+</div>
+
+<!-- 共用給湯室 -->
+<div class="facility">
+  <h3>共用給湯室 (各3F-5F)</h3>
+  <p class="desc">シンク・電子レンジをご用意しております。私物の設置及び放置は禁止です。</p>
+  <p class="note">清掃時に私物等処分される場合がございますので設置しないようお願いいたします。<br>電熱器等を使用しての湯沸かしは禁止としております。（パントリー内の湯沸器を使用してください。）</p>
+</div>
+
+</div><!-- /.main -->
+
+<footer>
+  ANYZ 館内利用案内（抜粋）
+</footer>
+
+</body>
+</html>
